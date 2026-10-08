@@ -1,5 +1,22 @@
 # Stopgap nests for subgraphs the network does not serve (docs/subgraph-stopgap.md). One route per deployment.
 subgraphs.nuthatch-indexer.com {
+	request_body {
+		max_size 32KB
+	}
+	# Per IP first, then the whole host: one heavy caller cannot crowd out the users of an app, and a
+	# flood is bounced here before it reaches the two SQL permits of the nest.
+	rate_limit {
+		zone subgraphs_ip {
+			key {remote_host}
+			events 600
+			window 10s
+		}
+		zone subgraphs_all {
+			key static
+			events 3000
+			window 10s
+		}
+	}
 	@preflight method OPTIONS
 	handle @preflight {
 		header Access-Control-Allow-Origin "*"
