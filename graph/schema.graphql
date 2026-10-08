@@ -1,0 +1,145 @@
+type Card @entity(immutable: false) {
+    id: Bytes!
+    owner:Bytes! # address
+    nickname: Bytes!
+    cardId: Int!
+    imageIndex: Int! 
+    parentCardId:Int!
+    createAt:Int!
+}
+
+type Medal @entity(immutable: false) {
+    id: Bytes!
+    medal: Bytes!
+    owner: Bytes!
+    medalId: Int!
+    medalType: Int!
+    createAt:Int!
+}
+
+type Minter @entity(immutable: false) {
+    id: Bytes!
+    token: Bytes!
+    cardId: Int!
+    cardIndex: Int!
+    supply:BigInt!
+    createAt:Int!
+}
+
+type MintPool @entity(immutable: false) {
+    id: Bytes!
+    token: Bytes!
+    index: Int!
+    totalSupply:BigInt!
+    createAt:Int!
+}
+
+type Token @entity(immutable: true) {
+    id: Bytes!
+    name: String!
+    sysmbol: String!
+    totalSupply: BigInt!
+    token: Bytes!
+    medal: Bytes!
+    board: Bytes!
+    forge: Bytes!
+    bonus: Bytes!
+    achievement: Bytes!
+    createAt:Int!
+}
+
+type Mint @entity(immutable: true) {
+    id: Bytes!
+    token: Bytes!
+    owner: Bytes!
+    cardId: Int!
+    cardIndex: Int!
+    usdtAmount:BigInt!
+    tokenAmount:BigInt!
+    createAt:Int!
+}
+
+type Subscribe @entity(immutable: true) {
+    id: Bytes!
+    token: Bytes!
+    owner: Bytes!
+    cardId: Int!
+    cardIndex: Int!
+    amount:BigInt!
+    createAt:Int!
+}
+
+type Ransom @entity(immutable: true) {
+    id: Bytes!
+    token: Bytes!
+    owner: Bytes!
+    cardId: Int!
+    cardIndex: Int!
+    amount:BigInt!
+    createAt:Int!
+}
+
+type BoardRelease @entity(immutable: true) {
+    id: Bytes!
+    token: Bytes!
+    useTvl:BigInt!
+    totalTvl:BigInt!
+    releaseTokenAmount:BigInt!
+    hash:Bytes!
+    createAt:Int!
+}
+
+type Reward @entity(immutable: true) {
+    id: Bytes!
+    token: Bytes!
+    cardId: Int!
+    amount:BigInt!
+    createAt:Int!
+}
+
+type Brokerage @entity(immutable: true) {
+    id: Bytes!
+    token: Bytes!
+    owner: Bytes!
+    cardId: Int!
+    amount:BigInt!
+    createAt:Int!
+}
+
+type Harvest @entity(immutable: true) {
+    id: Bytes!
+    token: Bytes!
+    owner: Bytes!
+    medalId: Int!
+    amount:BigInt!
+    createAt:Int!
+}
+
+type Distribute @entity(immutable: true) {
+    id: Bytes!
+    token: Bytes!
+    operator: Bytes!
+    hash: Bytes!
+    txHash: Bytes!
+    blockNumber: Int!
+    index: Int!
+    poolId: Int!
+    distributeRadio:BigInt!
+    amount:BigInt!
+    createAt:Int!
+}
+
+type DailyState @entity(immutable: false) {
+    id: Bytes!
+    token: Bytes!
+    mintTokenAmount:BigInt!
+    mintAmount:BigInt!
+    subscribeAmount:BigInt!
+    ransomAmount:BigInt!
+    harvestAmount:BigInt!
+    rewardAmount:BigInt!
+    brokerageAmount:BigInt!
+    distributeAmount:BigInt!
+    newCards:BigInt!
+    createAt:Int!
+}

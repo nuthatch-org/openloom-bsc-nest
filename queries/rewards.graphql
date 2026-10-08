@@ -1,0 +1,6 @@
+{
+  rewards(first: 10, orderBy: createAt, orderDirection: desc) { id token cardId amount createAt }
+  brokerages(first: 10, orderBy: createAt, orderDirection: desc) { id owner cardId amount createAt }
+  harvests(first: 10, orderBy: createAt, orderDirection: desc) { id owner medalId amount createAt }
+  boardReleases(first: 10, orderBy: createAt, orderDirection: desc) { id useTvl totalTvl releaseTokenAmount hash createAt }
+}

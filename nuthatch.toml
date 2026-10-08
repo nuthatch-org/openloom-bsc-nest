@@ -1,0 +1,84 @@
+[nest]
+name = "openloom-bsc-nest"
+chain = "bsc"
+chain_id = 56
+rpc_urls = ["https://bsc-rpc.publicnode.com"]
+schema_version = 1
+block_timestamps = true
+
+[[contracts]]
+alias = "factory"
+address = "0xea82f9d5f2832295b5d3b75f0e9f260b2694fb03"
+start_block = 49879203
+abi = "abis/factory.json"
+events = ["CreateToken"]
+
+[[contracts]]
+alias = "card_factory"
+address = "0x6a40b14e33984c8179cfd751fe8ca0d188b06868"
+start_block = 48952263
+abi = "abis/card_factory.json"
+events = ["MakeCard"]
+
+[[contracts]]
+alias = "card"
+address = "0xdab4c309944a61a42a1879fcc7381c47a5561377"
+start_block = 48952263
+abi = "abis/card.json"
+events = ["Transfer"]
+
+[[templates]]
+name = "board_template"
+abi = "abis/board_template.json"
+events = [
+    "Release",
+    "TakeReward",
+    "TakeBrokerage",
+]
+
+[[templates]]
+name = "bonus_template"
+abi = "abis/bonus_template.json"
+events = [
+    "MintMedal",
+    "Harvest",
+]
+
+[[templates]]
+name = "forge_template"
+abi = "abis/forge_template.json"
+events = [
+    "Subscribe",
+    "Mint",
+    "Ransom",
+    "Distribute",
+]
+
+[[templates]]
+name = "medal_template"
+abi = "abis/medal_template.json"
+events = ["Transfer"]
+
+[[factories]]
+watch = "factory"
+event = "CreateToken"
+child_param = "board"
+template = "board_template"
+
+[[factories]]
+watch = "factory"
+event = "CreateToken"
+child_param = "bonus"
+template = "bonus_template"
+
+[[factories]]
+watch = "factory"
+event = "CreateToken"
+child_param = "forge"
+template = "forge_template"
+
+[[factories]]
+watch = "factory"
+event = "CreateToken"
+child_param = "medal"
+template = "medal_template"

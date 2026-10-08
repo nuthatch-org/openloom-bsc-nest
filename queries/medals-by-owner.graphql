@@ -1,0 +1,3 @@
+query MedalsByOwner($owner: Bytes!) {
+  medals(first: 100, where: { owner: $owner }) { id medal owner medalId medalType createAt }
+}

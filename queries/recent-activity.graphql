@@ -1,0 +1,5 @@
+{
+  mints(first: 10, orderBy: createAt, orderDirection: desc) { id owner cardId cardIndex usdtAmount tokenAmount createAt }
+  subscribes(first: 10, orderBy: createAt, orderDirection: desc) { id owner cardId cardIndex amount createAt }
+  ransoms(first: 10, orderBy: createAt, orderDirection: desc) { id owner cardId cardIndex amount createAt }
+}

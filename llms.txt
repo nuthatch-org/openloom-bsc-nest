@@ -1,0 +1,40 @@
+# nuthatch nest on bsc
+
+A self-hosted blockchain index. Query it locally; there is no third-party API.
+
+## Contracts
+- `factory` = 0xea82f9d5f2832295b5d3b75f0e9f260b2694fb03
+- `card_factory` = 0x6a40b14e33984c8179cfd751fe8ca0d188b06868
+- `card` = 0xdab4c309944a61a42a1879fcc7381c47a5561377
+
+## Tables (one per contract event)
+- `board_template__release` - Release(address,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, useTvl, totalTvl, releaseTokenAmount)
+- `board_template__take_brokerage` - TakeBrokerage(address,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, owner, token, cardId, amount)
+- `board_template__take_reward` - TakeReward(address,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, owner, token, cardId, amount)
+- `bonus_template__harvest` - Harvest(address,address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, owner, token, medalId, amount)
+- `bonus_template__mint_medal` - MintMedal(address,address,uint256,uint8) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, medal, owner, medalId, medalType)
+- `card__transfer` - Transfer(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, from, to, tokenId)
+- `card_factory__make_card` - MakeCard(address,uint256,bytes6,uint64,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, user, tokenId, nickname, imageIndex, parentCardId)
+- `factory__create_token` - CreateToken(string,string,uint256,address,address,address,address,address,address) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, name, sysmbol, totalSupply, token, medal, forge, bonus, board, achievement)
+- `forge_template__distribute` - Distribute(address,uint256,uint256,uint256,bytes32) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, index, poolId, distributeRadio, blockHash)
+- `forge_template__mint` - Mint(address,address,uint256,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, owner, cardId, cardIndex, usdtAmount, tokenAmount)
+- `forge_template__ransom` - Ransom(address,address,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, owner, cardId, cardIndex, amount)
+- `forge_template__subscribe` - Subscribe(address,address,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, owner, cardId, cardIndex, amount)
+- `medal_template__transfer` - Transfer(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, from, to, tokenId)
+
+## Live HTTP API (run `nuthatch dev`)
+- `GET /`                    index status
+- `GET /tables`              every table with its columns
+- `GET /table/{name}?limit=N` recent rows of one table (hot + sealed)
+- `GET /entity/{id}`         one row by id (`{block:012}-{logindex:06}`)
+- `GET /sql?q=SELECT...`     read-only SQL; each table is a view named `{alias}__{event}`, and each
+                             authored view (`views/*.sql`) answers by its own name
+- `GET /balances?limit=N`    top holder balances (when an ERC-20 Transfer table is present)
+- `GET /balance/{address}`   one address's derived balance
+- `GET /queries`             the mount's SQL mode and the queries its operator declared in
+                             `mounts.toml` (none on an open nest); `GET /q/{name}` runs one
+- `GET /derived`             the nest's incremental entities (`entities.toml`); `GET /derived/{entity}` reads one
+
+## MCP (for coding agents)
+Run `nuthatch mcp` (stdio) to expose tools: status, schema, tables, table, sql, entity,
+balance, top_balances. Fully offline against the local instance; nothing phones home.

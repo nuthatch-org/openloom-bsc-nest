@@ -1,0 +1,281 @@
+# semantic.toml - what this nest's data *means* (RFC-0016). Read by the MCP `schema`
+# tool, the admin UI, and the scaffolded skill. Edit descriptions freely; the
+# `[table.*.footguns]` are DERIVED from the ABI and regenerated - leave them be.
+
+schema_version = 1
+
+[nest]
+description = "The `openloom-bsc-nest` nest on bsc. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.board_template__release]
+description = "`Release(address,uint256,uint256,uint256)` events emitted by the `board_template` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Release(address,uint256,uint256,uint256) event"
+
+[table.board_template__release.columns]
+releaseTokenAmount = "The `releaseTokenAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+totalTvl = "The `totalTvl` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+useTvl = "The `useTvl` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.board_template__release.footguns]
+big_ints = [
+    "useTvl",
+    "totalTvl",
+    "releaseTokenAmount",
+]
+overflows_dec = [
+    "useTvl",
+    "totalTvl",
+    "releaseTokenAmount",
+]
+
+[table.board_template__take_brokerage]
+description = "`TakeBrokerage(address,address,uint256,uint256)` events emitted by the `board_template` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per TakeBrokerage(address,address,uint256,uint256) event"
+
+[table.board_template__take_brokerage.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+cardId = "The `cardId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.board_template__take_brokerage.footguns]
+big_ints = [
+    "cardId",
+    "amount",
+]
+overflows_dec = [
+    "cardId",
+    "amount",
+]
+
+[table.board_template__take_reward]
+description = "`TakeReward(address,address,uint256,uint256)` events emitted by the `board_template` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per TakeReward(address,address,uint256,uint256) event"
+
+[table.board_template__take_reward.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+cardId = "The `cardId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.board_template__take_reward.footguns]
+big_ints = [
+    "cardId",
+    "amount",
+]
+overflows_dec = [
+    "cardId",
+    "amount",
+]
+
+[table.bonus_template__harvest]
+description = "`Harvest(address,address,uint256,uint256)` events emitted by the `bonus_template` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Harvest(address,address,uint256,uint256) event"
+
+[table.bonus_template__harvest.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+medalId = "The `medalId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.bonus_template__harvest.footguns]
+big_ints = [
+    "medalId",
+    "amount",
+]
+overflows_dec = [
+    "medalId",
+    "amount",
+]
+
+[table.bonus_template__mint_medal]
+description = "`MintMedal(address,address,uint256,uint8)` events emitted by the `bonus_template` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MintMedal(address,address,uint256,uint8) event"
+
+[table.bonus_template__mint_medal.columns]
+medal = "The `medal` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+medalId = "The `medalId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+medalType = "The `medalType` uint8 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.bonus_template__mint_medal.footguns]
+big_ints = ["medalId"]
+overflows_dec = ["medalId"]
+
+[table.card__transfer]
+description = "`Transfer(address,address,uint256)` events emitted by the `card` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Transfer(address,address,uint256) event"
+
+[table.card__transfer.columns]
+from = "The `from` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.card__transfer.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+big_ints = ["tokenId"]
+overflows_dec = ["tokenId"]
+
+[table.card_factory__make_card]
+description = "`MakeCard(address,uint256,bytes6,uint64,uint256)` events emitted by the `card_factory` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per MakeCard(address,uint256,bytes6,uint64,uint256) event"
+
+[table.card_factory__make_card.columns]
+imageIndex = "The `imageIndex` uint64 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+nickname = "The `nickname` bytes6 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+parentCardId = "The `parentCardId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+user = "The `user` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.card_factory__make_card.footguns]
+reserved_words = ["user"]
+big_ints = [
+    "tokenId",
+    "parentCardId",
+]
+overflows_dec = [
+    "tokenId",
+    "parentCardId",
+]
+
+[table.factory__create_token]
+description = "`CreateToken(string,string,uint256,address,address,address,address,address,address)` events emitted by the `factory` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CreateToken(string,string,uint256,address,address,address,address,address,address) event"
+
+[table.factory__create_token.columns]
+achievement = "The `achievement` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+board = "The `board` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+bonus = "The `bonus` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+forge = "The `forge` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+medal = "The `medal` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+name = "The `name` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sysmbol = "The `sysmbol` string parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+totalSupply = "The `totalSupply` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.factory__create_token.footguns]
+big_ints = ["totalSupply"]
+overflows_dec = ["totalSupply"]
+
+[table.forge_template__distribute]
+description = "`Distribute(address,uint256,uint256,uint256,bytes32)` events emitted by the `forge_template` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Distribute(address,uint256,uint256,uint256,bytes32) event"
+
+[table.forge_template__distribute.columns]
+blockHash = "The `blockHash` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+distributeRadio = "The `distributeRadio` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+index = "The `index` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+poolId = "The `poolId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.forge_template__distribute.footguns]
+reserved_words = ["index"]
+big_ints = [
+    "index",
+    "poolId",
+    "distributeRadio",
+]
+overflows_dec = [
+    "index",
+    "poolId",
+    "distributeRadio",
+]
+
+[table.forge_template__mint]
+description = "`Mint(address,address,uint256,uint256,uint256,uint256)` events emitted by the `forge_template` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Mint(address,address,uint256,uint256,uint256,uint256) event"
+
+[table.forge_template__mint.columns]
+cardId = "The `cardId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+cardIndex = "The `cardIndex` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenAmount = "The `tokenAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+usdtAmount = "The `usdtAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.forge_template__mint.footguns]
+big_ints = [
+    "cardId",
+    "cardIndex",
+    "usdtAmount",
+    "tokenAmount",
+]
+overflows_dec = [
+    "cardId",
+    "cardIndex",
+    "usdtAmount",
+    "tokenAmount",
+]
+
+[table.forge_template__ransom]
+description = "`Ransom(address,address,uint256,uint256,uint256)` events emitted by the `forge_template` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Ransom(address,address,uint256,uint256,uint256) event"
+
+[table.forge_template__ransom.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+cardId = "The `cardId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+cardIndex = "The `cardIndex` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.forge_template__ransom.footguns]
+big_ints = [
+    "cardId",
+    "cardIndex",
+    "amount",
+]
+overflows_dec = [
+    "cardId",
+    "cardIndex",
+    "amount",
+]
+
+[table.forge_template__subscribe]
+description = "`Subscribe(address,address,uint256,uint256,uint256)` events emitted by the `forge_template` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Subscribe(address,address,uint256,uint256,uint256) event"
+
+[table.forge_template__subscribe.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+cardId = "The `cardId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+cardIndex = "The `cardIndex` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+owner = "The `owner` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.forge_template__subscribe.footguns]
+big_ints = [
+    "cardId",
+    "cardIndex",
+    "amount",
+]
+overflows_dec = [
+    "cardId",
+    "cardIndex",
+    "amount",
+]
+
+[table.medal_template__transfer]
+description = "`Transfer(address,address,uint256)` events emitted by the `medal_template` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Transfer(address,address,uint256) event"
+
+[table.medal_template__transfer.columns]
+from = "The `from` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+to = "The `to` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenId = "The `tokenId` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.medal_template__transfer.footguns]
+reserved_words = [
+    "from",
+    "to",
+]
+big_ints = ["tokenId"]
+overflows_dec = ["tokenId"]
+
+[view]
+
+# Authored views (views/*.sql) are described here so the MCP/`/schema` can render them:
+# [view.your_view_name]
+# description = "What this derivation computes."

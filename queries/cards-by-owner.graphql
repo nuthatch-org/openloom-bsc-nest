@@ -1,0 +1,5 @@
+query CardsByOwner($owner: Bytes!) {
+  cards(first: 100, where: { owner: $owner }, orderBy: cardId) {
+    id owner nickname cardId imageIndex parentCardId createAt
+  }
+}

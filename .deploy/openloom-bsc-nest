@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Stopgap for openloom-bsc (graph-support#53). The BNB key lives only in ~/.config/nightswatch/bnb-rpc.
+set -euo pipefail
+rpc=$(head -n 1 "$HOME/.config/nightswatch/bnb-rpc")
+exec "$HOME/.local/bin/nuthatch-graph" dev --dir "$HOME/openloom-bsc-nest" \
+  --rpc "$rpc" --state-rpc "$rpc" --window 100000 --seal-direct --concurrency 8 --poll-interval 60s --listen 100.83.44.63:8311

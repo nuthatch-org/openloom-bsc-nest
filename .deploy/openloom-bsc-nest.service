@@ -1,0 +1,11 @@
+[Unit]
+Description=Stopgap nest for openloom-bsc, QmXsbGm5Mbm9H5HWrt11uwWSf58MyaxjspF4TNYx166Xgz (graph-support#53)
+
+[Service]
+ExecStart=%h/.local/bin/openloom-bsc-nest
+Environment=RUST_LOG=info,dbsp=warn
+Environment=NUTHATCH_BURRMILL_MEMORY_LIMIT=1024MB
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
