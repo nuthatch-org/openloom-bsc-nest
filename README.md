@@ -1,6 +1,6 @@
 # openloom-bsc-nest
 
-A [nuthatch](https://github.com/nightswatchhq/nuthatch) nest that answers the GraphQL of the
+A [nuthatch](https://github.com/nuthatch-org/nuthatch) nest that answers the GraphQL of the
 `openloom-bsc` subgraph on BNB Smart Chain, deployment
 `QmXsbGm5Mbm9H5HWrt11uwWSf58MyaxjspF4TNYx166Xgz`, while no indexer on The Graph network serves it.
 It is a stopgap, stood up on 2026-10-08 when Subgraph Studio stopped serving BNB Chain subgraphs.
@@ -11,7 +11,7 @@ It is a stopgap, stood up on 2026-10-08 when Subgraph Studio stopped serving BNB
 | Page (status, playground, snippets) | https://nuthatch-indexer.com/subgraphs/QmXsbGm5Mbm9H5HWrt11uwWSf58MyaxjspF4TNYx166Xgz |
 | Unserved on the network since | 2026-07-02 16:06 UTC (last allocation closed) |
 | Last contract activity | 2026-05-19, so the data is complete and frozen |
-| Record | [nightswatchhq/graph-support#53](https://github.com/nightswatchhq/graph-support/issues/53) |
+| Record | [nuthatch-org/graph-support#53](https://github.com/nuthatch-org/graph-support/issues/53) |
 
 ## What it answers
 
@@ -55,7 +55,7 @@ an x86_64 Linux machine or an Apple Silicon Mac, and an archive BNB Chain endpoi
 not serve history back to block 48.9M.
 
 ```sh
-git clone https://github.com/nightswatchhq/openloom-bsc-nest
+git clone https://github.com/nuthatch-org/openloom-bsc-nest
 nuthatch dev --dir openloom-bsc-nest --rpc "$BNB_ARCHIVE_RPC" --state-rpc "$BNB_ARCHIVE_RPC" \
   --seal-direct --concurrency 8
 ```

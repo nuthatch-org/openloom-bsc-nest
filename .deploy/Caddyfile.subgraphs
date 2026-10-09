@@ -37,6 +37,6 @@ subgraphs.nuthatch-indexer.com {
 		reverse_proxy 100.83.44.63:8311
 	}
 	handle {
-		respond "Stopgap GraphQL for subgraphs the network does not serve: POST to /subgraphs/id/<deployment>. See https://github.com/nightswatchhq/nuthatch/blob/main/docs/subgraph-stopgap.md" 404
+		respond "Stopgap GraphQL for subgraphs the network does not serve: POST to /subgraphs/id/<deployment>. See https://github.com/nuthatch-org/nuthatch/blob/main/docs/subgraph-stopgap.md" 404
 	}
 }
